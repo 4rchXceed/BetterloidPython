@@ -1,0 +1,22 @@
+﻿<Window x:Class="BetterloidPython.PythonScriptSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BetterloidPython"
+        mc:Ignorable="d"
+        Title="PythonScriptSelector" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="LstbScripts" d:ItemsSource="{d:SampleData ItemCount=0}" Margin="46,53,531,53" SelectionChanged="LstbScripts_SelectionChanged"/>
+        <Label HorizontalAlignment="Left" Margin="46,11,0,0" VerticalAlignment="Top" Width="223" FontWeight="Bold" FontSize="20">
+            <Label Content="Scripts:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="223" FontWeight="Bold" FontSize="20"/>
+        </Label>
+        <Label Content="Script Actions:" HorizontalAlignment="Left" Margin="294,16,0,0" VerticalAlignment="Top" Height="37" Width="358" FontWeight="Bold" FontSize="20"/>
+        <Label x:Name="LblScriptInfos" Content="Current script (path): No script selected" HorizontalAlignment="Left" Margin="294,58,0,0" VerticalAlignment="Top" Height="77" Width="331"/>
+        <Label x:Name="LblWarning" Content="" HorizontalAlignment="Left" Margin="294,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.3,0.454" Width="264"/>
+        <Button x:Name="BtnRun" Content="Run" HorizontalAlignment="Left" Margin="294,171,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.188,0.057" Height="46" Width="106" Background="#FFF1F1F1" Foreground="Black" FontSize="20" BorderBrush="White" Click="BtnRun_Click"/>
+        <Button x:Name="BtnRemove" Content="Remove" HorizontalAlignment="Left" Margin="46,386,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.188,0.057" Height="38" Width="87" Background="#FFF1F1F1" Foreground="#FFAD0000" FontSize="15" BorderBrush="White" Click="BtnRemove_Click"/>
+        <Button x:Name="BtnAdd" Content="Add new" HorizontalAlignment="Left" Margin="166,386,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.188,0.057" Height="38" Width="87" Background="#FFF1F1F1" Foreground="Black" FontSize="15" BorderBrush="White" Click="BtnAdd_Click"/>
+
+    </Grid>
+</Window>

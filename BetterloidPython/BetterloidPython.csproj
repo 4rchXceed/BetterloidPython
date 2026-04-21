@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <AssemblyName>BetterloidPython</AssemblyName>
+    <RootNamespace>BetterloidPython</RootNamespace>
+
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Optimize>false</Optimize>
+    <OutputPath>VOCALOID5\Editor\Plugins\PluginTemplate\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="VOCALOID6">
+      <HintPath>..\..\..\..\..\..\..\Program Files\VOCALOID6\Editor\VOCALOID6.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Betterloid">
+      <HintPath>..\..\..\..\..\..\..\Program Files\VOCALOID6\Editor\Plugins\Betterloid\netframework4.6\Betterloid.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IronPython" Version="3.4.2" />
+    <PackageReference Include="IronPython.StdLib" Version="3.4.2" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.Reactive" Version="6.0.1" />
+    <PackageReference Include="UriTemplate.Core" Version="1.0.2" />
+    <PackageReference Include="WindowsAPICodePack-Core" Version="1.1.2" />
+    <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- <Page Include="ExampleDialog.xaml" /> -->
+    <!-- <Compile Include="ExampleDialog.xaml.cs" DependentUpon="ExampleDialog.xaml" /> -->
+    <!-- <Compile Include="ExampleDialogViewModel.cs" /> -->
+    <!-- <Compile Include="PluginTemplate.cs" /> -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="PluginConfig.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;C:\Users\lyamz\Documents\BetterLoid\MyPlugins\BetterloidPython\PluginTemplate\PostBuild.bat&quot;" />
+  </Target>
+
+</Project>
