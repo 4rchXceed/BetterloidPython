@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,25 @@ namespace BetterloidPython
             LoadConfig();
             UpdateScriptsListbox();
             engine = IronPython.Hosting.Python.CreateEngine();
+            Collection<string> pythonLibPaths = [Path.Join(AppDomain.CurrentDomain.BaseDirectory, "lib"), Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Plugins", "BetterloidPython", "net8.0-windows", "lib")];
+            bool hasAtleastOneValidPath = false;
+            int i = 0;
+            while (!hasAtleastOneValidPath && i < pythonLibPaths.Count)
+            {
+                if (Directory.Exists(pythonLibPaths[i]))
+                {
+                    hasAtleastOneValidPath = true;
+                }
+                else
+                {
+                    pythonLibPaths.RemoveAt(i);
+                }
+            }
+            if (!hasAtleastOneValidPath)
+            {
+                System.Windows.MessageBox.Show(this, "No valid Python library paths found. The scripts might not work properly. Please make sure to have the Python standard library in one of the following paths: " + string.Join(", ", pythonLibPaths), "Error while setting up the Python engine", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            }
+            engine.SetSearchPaths(pythonLibPaths);
         }
         private void LoadConfig()
         {
